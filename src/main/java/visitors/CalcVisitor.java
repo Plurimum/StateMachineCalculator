@@ -23,6 +23,10 @@ public class CalcVisitor implements TokenVisitor {
 
     @Override
     public void visit(Operation token) {
+        if (stack.size() < 2) {
+            throw new VisitException("Not enough arguments to calculate binary operation");
+        }
+
         int a = stack.removeLast();
         int b = stack.removeLast();
 
