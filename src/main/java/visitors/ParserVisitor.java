@@ -50,6 +50,10 @@ public class ParserVisitor implements TokenVisitor {
                     rpn.add(stack.removeLast());
                 }
 
+                if (stack.isEmpty()) {
+                    throw new VisitException("Incorrect parenthesis sequence");
+                }
+
                 stack.removeLast();
             }
         }
